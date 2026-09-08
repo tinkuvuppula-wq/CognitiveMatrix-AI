@@ -1,0 +1,8 @@
+version: "3.8"
+services:
+  cognitivematrix-ai:
+    build: .
+    container_name: cognitivematrix_ai_app
+    ports:
+      - "7600:7600"
+    restart: always
