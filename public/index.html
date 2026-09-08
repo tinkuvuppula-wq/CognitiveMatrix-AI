@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>CognitiveMatrix AI - Enterprise Multi-Agent Reasoning Matrix</title>
+  <style>
+    body { margin: 0; background: #070a13; color: #38bdf8; font-family: 'Consolas', monospace; overflow: hidden; }
+    #header { padding: 14px 28px; background: #0c1222; border-bottom: 1px solid #1e293b; display: flex; justify-content: space-between; align-items: center; }
+    h1 { margin: 0; font-size: 19px; color: #60a5fa; }
+    .badge { background: #1e293b; color: #34d399; padding: 4px 12px; border-radius: 6px; font-size: 12px; border: 1px solid #334155; }
+    #canvas { display: block; width: 100vw; height: calc(100vh - 65px); }
+  </style>
+</head>
+<body>
+  <div id="header">
+    <h1>⚡ CognitiveMatrix AI: Autonomous Multi-Agent Reasoning & Neural Vector Matrix</h1>
+    <div>
+      <span class="badge">16 Cognitive Archetypes</span>
+      <span class="badge">Adaptive RAG Neural Memory</span>
+      <span class="badge">Real-Time LLM Gateway</span>
+    </div>
+  </div>
+  <canvas id="canvas"></canvas>
+  <script>
+    const canvas = document.getElementById('canvas');
+    const ctx = canvas.getContext('2d');
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight - 65;
+
+    const matrixNodes = [
+      { id: 'UserQuery', x: 120, y: canvas.height / 2, color: '#60a5fa' },
+      { id: 'CognitiveStrategist', x: 320, y: canvas.height / 2 - 130, color: '#a78bfa' },
+      { id: 'NeuralMemoryMatrix', x: 320, y: canvas.height / 2 + 130, color: '#34d399' },
+      { id: 'VectorIndexRetriever', x: 550, y: canvas.height / 2 + 130, color: '#2dd4bf' },
+      { id: 'MultiAgentConsensus', x: 550, y: canvas.height / 2 - 130, color: '#f59e0b' },
+      { id: 'ToolSandboxRuntime', x: 780, y: canvas.height / 2 + 60, color: '#f43f5e' },
+      { id: 'HallucinationEvaluator', x: 780, y: canvas.height / 2 - 60, color: '#ec4899' },
+      { id: 'CognitiveMatrixCore', x: 1000, y: canvas.height / 2, color: '#10b981' }
+    ];
+
+    const matrixEdges = [
+      [0, 1], [0, 2], [1, 4], [2, 3], [3, 4], [4, 5], [4, 6], [5, 7], [6, 7]
+    ];
+
+    let t = 0;
+    function animate() {
+      t += 0.02;
+      ctx.fillStyle = '#070a13';
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+      matrixEdges.forEach(([u, v]) => {
+        const from = matrixNodes[u];
+        const to = matrixNodes[v];
+        ctx.strokeStyle = 'rgba(96, 165, 250, 0.22)';
+        ctx.lineWidth = 2;
+        ctx.beginPath();
+        ctx.moveTo(from.x, from.y);
+        ctx.lineTo(to.x, to.y);
+        ctx.stroke();
+
+        const ratio = (t + u * 0.25) % 1.0;
+        const px = from.x + (to.x - from.x) * ratio;
+        const py = from.y + (to.y - from.y) * ratio;
+        ctx.fillStyle = '#60a5fa';
+        ctx.beginPath();
+        ctx.arc(px, py, 4, 0, Math.PI * 2);
+        ctx.fill();
+      });
+
+      matrixNodes.forEach(n => {
+        ctx.fillStyle = n.color;
+        ctx.shadowColor = n.color;
+        ctx.shadowBlur = 18;
+        ctx.beginPath();
+        ctx.arc(n.x, n.y, 15, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.shadowBlur = 0;
+
+        ctx.fillStyle = '#e2e8f0';
+        ctx.font = '12px monospace';
+        ctx.fillText(n.id, n.x - 40, n.y + 30);
+      });
+
+      requestAnimationFrame(animate);
+    }
+    animate();
+  </script>
+</body>
+</html>
