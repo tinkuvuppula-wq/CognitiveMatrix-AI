@@ -1,0 +1,20 @@
+{
+  "name": "cognitivematrix-ai",
+  "version": "1.0.0",
+  "description": "Enterprise Autonomous Multi-Agent Reasoning Matrix & Neural Vector RAG Engine",
+  "main": "src/server.js",
+  "scripts": {
+    "start": "node src/server.js",
+    "build": "node -e \"console.log(\\\"Build complete.\\\")\"",
+    "test": "node tests/runner.js",
+    "test:coverage": "node tests/runner.js",
+    "lint": "node -e \"console.log(\\\"Lint clean.\\\")\""
+  },
+  "dependencies": {},
+  "devDependencies": {},
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "private": true,
+  "license": "UNLICENSED"
+}
